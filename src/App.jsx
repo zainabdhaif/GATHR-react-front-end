@@ -25,7 +25,7 @@ const App = () => {
       setEvents(eventsData);
     };
     
-    if (user) fetchAllEvents();
+    fetchAllEvents();
   }, [user]);
 
 
@@ -40,11 +40,11 @@ const App = () => {
       <NavBar user={user} handleSignout={handleSignout}/>
       <main className="flex-grow-1">
         <Routes>
+          <Route path="/events" element={<EventList events={events} />} />
           { user ? (
              // Protected Routes:
              <>
             <Route path="/" element={<Dashboard user={user} />} />
-            <Route path="/events" element={<EventList events={events} />} />
            </>
           ) : (
              // Public Route:
