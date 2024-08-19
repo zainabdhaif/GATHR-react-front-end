@@ -1,13 +1,19 @@
+import "./Landing.css";
+
 const Landing = () => {
   return (
-  
-    <main className="container mt-5">
-      <div className="text-center">
-        <h1 className="display-4">Welcome to Our Site!</h1>
-        <p className="lead mt-4">
-          If you sign up for a new account, you will have the ability to sign in
-          and see your super secret dashboard.
-        </p>
+    <main>
+      <div className="video-container">
+        <video
+          autoPlay
+          muted
+          loop
+          className="video"
+          src="https://download-video.akamaized.net/v3-1/playback/93eb83a5-5d71-4966-abed-a0b38b1e1ce7/78d113db-6e51ed0b?__token__=st=1724050086~exp=1724064486~acl=%2Fv3-1%2Fplayback%2F93eb83a5-5d71-4966-abed-a0b38b1e1ce7%2F78d113db-6e51ed0b%2A~hmac=0368c0ae55cfa6eb6013b214653a7e4a04b2fb53dfdb235a07580acbbf13658a&r=dXMtd2VzdDE%3D"
+        ></video>
+      </div>
+      <div>
+        <h2>Upcoming Events</h2>
       </div>
     </main>
   );
