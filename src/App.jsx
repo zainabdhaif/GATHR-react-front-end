@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route ,useNavigate} from 'react-router-dom';
 import authService from './services/authService';
 import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
@@ -16,12 +16,12 @@ import Footer from './components/Footer/Footer';
 import EventList from './components/EventList/EventList';
 import Booking from './components/Booking/Booking';
 import EventDetails from './components/EventDetails/EventDetails';
-
-
-
-
+import EventForm from './components/EventForm/EventForm';
+import EventEdit from './components/EventEdit/EventEdit';
 
 const App = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState(authService.getUser());
   
   const [events, setEvents] = useState([]); 
@@ -33,7 +33,7 @@ const App = () => {
     };
     
     fetchAllEvents();
-  }, [user]);
+  }, [user, events]);
 
   // const handleAddBooking = () => {
   //   console.log('Booking added');
@@ -44,6 +44,23 @@ const App = () => {
     setUser(null);
   }
 
+  const handleAddEvent = async (formData) => {
+    const newEvent = await eventService.create(formData);
+    setEvents([...events, newEvent]); 
+    navigate('/events');
+  }
+  
+  const handleRemoveEvent = async (eventId) => {
+    try {
+      await eventService.deleteEvent(eventId); 
+      navigate("/events"); 
+    } catch (error) {
+      console.error("Error", error);
+ 
+    }
+  };
+  
+  
   return (
     <div className="d-flex flex-column min-vh-100">
       <NavBar user={user} handleSignout={handleSignout}/>
@@ -54,9 +71,15 @@ const App = () => {
              // Protected Routes:
              <>
             <Route path="/" element={<Dashboard user={user} />} />
-            <Route path="/events/:eventId" element={<EventDetails />} />
-            <Route path="/events/:eventid/bookings" element={<Booking />} />
+             <Route path="/events/:eventId" element={<EventDetails />} />
+             <Route
+              path="/events/new"
+              element={<EventForm handleAddEvent={handleAddEvent} />}
+            />
+              <Route path="/events/:eventId/edit" element={<EventEdit />}/>
+          
            </>
+           
           ) : (
              // Public Route:
              <Route path="/" element={<Landing />} />
