@@ -19,6 +19,9 @@ const EventList = (props) => {
             <Link to={`/events/${event._id}`} className="btn btn-primary btn-sm">
               Read More
             </Link>
+            <Link key={event._id} to={`/events/${event._id}/bookings`} className="btn btn-primary mt-3">
+              Book Now
+            </Link>
           </div>
         </div>
       ))}

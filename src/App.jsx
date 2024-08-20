@@ -4,6 +4,7 @@ import authService from './services/authService';
 import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
 import eventService from './services/eventService';
+import bookingService from './services/bookingService';
 
 // Components
 import NavBar from './components/NavBar/NavBar';
@@ -13,10 +14,10 @@ import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import Footer from './components/Footer/Footer';
 import EventList from './components/EventList/EventList';
+import Booking from './components/Booking/Booking';
 import EventDetails from './components/EventDetails/EventDetails';
 import EventForm from './components/EventForm/EventForm';
 import EventEdit from './components/EventEdit/EventEdit';
-
 
 const App = () => {
   const navigate = useNavigate();
@@ -34,7 +35,9 @@ const App = () => {
     fetchAllEvents();
   }, [user, events]);
 
-
+  // const handleAddBooking = () => {
+  //   console.log('Booking added');
+  // }
 
   const handleSignout = () => {
     authService.signout();
@@ -67,13 +70,14 @@ const App = () => {
           { user ? (
              // Protected Routes:
              <>
-            <Route path="/events/:eventId" element={<EventDetails handleRemoveEvent={handleRemoveEvent}/>} />
             <Route path="/" element={<Dashboard user={user} />} />
-            <Route
+             <Route path="/events/:eventId" element={<EventDetails />} />
+             <Route
               path="/events/new"
               element={<EventForm handleAddEvent={handleAddEvent} />}
             />
-            <Route path="/events/:eventId/edit" element={<EventEdit />}/>
+              <Route path="/events/:eventId/edit" element={<EventEdit />}/>
+          
            </>
            
           ) : (
