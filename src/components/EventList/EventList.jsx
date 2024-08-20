@@ -36,7 +36,7 @@ const EventList = (props) => {
             <p>
               <strong>Price:</strong> ${event.price}
             </p>
-            <Link to={`/events/${event._id}/book`} className="btn btn-primary mt-3">
+            <Link key={event._id} to={`/events/${event._id}/bookings`} className="btn btn-primary mt-3">
               Book Now
             </Link>
           </div>
