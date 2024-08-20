@@ -1,48 +1,28 @@
-// src/components/EventList/EventList.jsx
-
+import './EventList.css'
 import { Link } from 'react-router-dom';
 
 const EventList = (props) => {
   return (
-    <main className="container mt-4">
+    <div className="row">
       {props.events.map((event) => (
-        <article key={event._id} className="card mb-4 shadow-sm">
-          <header className="card-header bg-primary text-white">
-            <h2 className="h5">{event.name}</h2>
-            <p className="mb-0">
-              Starting Date{' '}
-              {new Date(event.dateStarted).toLocaleDateString()}
-            </p>
-            <p className="mb-0">
-              Ending Date{' '}
-              {new Date(event.dateEnded).toLocaleDateString()}
-            </p>
-          </header>
-          <div className="card-body">
-            {event.image && (
-              <img
-                src={event.image}
-                alt={event.name}
-                className="img-fluid mb-3"
-              />
-            )}
-            <p>{event.description}</p>
-            <p>
-              <strong>Location:</strong> {event.location}
-            </p>
-            <p>
-              <strong>Category:</strong> {event.category}
-            </p>
-            <p>
-              <strong>Price:</strong> ${event.price}
-            </p>
-            <Link to={`/events/${event._id}/book`} className="btn btn-primary mt-3">
-              Book Now
+        <div key={event._id} className="col-md-4 col-sm-6 mb-4">
+          <div className="card card-block">
+          
+            <img
+              src={event.image}
+              alt={event.name}
+              className="img-fluid"
+            />
+            <h5 className="card-title mt-3 mb-3">{event.name}</h5>
+            <p className="mb-0">Starting Date{' '}{new Date(event.dateStarted).toLocaleDateString()}</p>
+
+            <Link to={`/events/${event._id}`} className="btn btn-primary btn-sm">
+              Read More
             </Link>
           </div>
-        </article>
+        </div>
       ))}
-    </main>
+    </div>
   );
 };
 
