@@ -16,7 +16,15 @@ const EventDetails = (props) => {
     getEvent();
   }, [eventId]);
 
-
+  // const handleRemoveEvent = async () => {
+  //   try {
+  //     await eventService.delete(eventId); 
+  //     navigate("/events"); 
+  //   } catch (error) {
+  //     console.error("Error", error);
+ 
+  //   }
+  // };
 
   if (!event) {
     return <main className="container mt-4"><h3>Loading...</h3></main>;
@@ -29,7 +37,7 @@ const EventDetails = (props) => {
       </header>
       <div className="row mb-4">
         <div className="col-md-8">
-          <p className="text-muted">{event.category.toUpperCase()}</p>
+          <p className="text-muted">{event.category}</p>
           <p>{event.description}</p>
           <p><strong>Location:</strong> {event.location}</p>
           <p><strong>Price:</strong> ${event.price}</p>
@@ -47,8 +55,8 @@ const EventDetails = (props) => {
           Edit
         </button>
         <button
-          className="btn btn-primary mt-3"
-
+          className="btn btn-danger mt-3"
+          onClick={() => props.handleRemoveEvent(eventId)}
         >
           Delete
         </button>
