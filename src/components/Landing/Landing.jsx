@@ -1,6 +1,29 @@
 import "./Landing.css";
+import EventCards from '../EventsCards/EventCards';
+import { useState, useEffect } from 'react';
+import authService from '../../services/authService';
+import eventService from "../../services/eventService";
 
 const Landing = () => {
+  const [user, setUser] = useState(authService.getUser());
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    const fetchLatestEvents = async () => {
+      try {
+        const eventsData = await eventService.index();
+        // Sort the events in descending order by creation date
+        const sortedEvents = eventsData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        // Take the first 3 events
+        const latestEvents = sortedEvents.slice(0, 3);
+        setCards(latestEvents);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    };
+
+    fetchLatestEvents();
+  }, [user]);
+
   return (
     <main>
       <div className="video-container">
@@ -9,11 +32,15 @@ const Landing = () => {
           muted
           loop
           className="video"
-          src="https://download-video.akamaized.net/v3-1/playback/93eb83a5-5d71-4966-abed-a0b38b1e1ce7/78d113db-6e51ed0b?__token__=st=1724064725~exp=1724079125~acl=%2Fv3-1%2Fplayback%2F93eb83a5-5d71-4966-abed-a0b38b1e1ce7%2F78d113db-6e51ed0b%2A~hmac=f51b7a8e0bf07654eb6d1bdcebf9551395970a9ce27a38a1f06594f9081c8675&r=dXMtd2VzdDE%3D"
+          src="/video/video.mp4"
         ></video>
       </div>
       <div>
         <h2>Upcoming Events</h2>
+        <div>
+        <EventCards cards={cards}/>
+
+        </div>
       </div>
     </main>
   );

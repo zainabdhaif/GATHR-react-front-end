@@ -15,8 +15,7 @@ import EventList from './components/EventList/EventList';
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
-  
-  const [events, setEvents] = useState([]); 
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const fetchAllEvents = async () => {
@@ -40,7 +39,7 @@ const App = () => {
       <main className="flex-grow-1">
         <Routes>
           <Route path="/events" element={<EventList events={events} />} />
-          { user ? (
+          {/* { user ? (
              // Protected Routes:
              <>
             <Route path="/" element={<Landing user={user} />} />
@@ -49,6 +48,22 @@ const App = () => {
              // Public Route:
              <Route path="/" element={<Landing />} />
              
+          )} */}
+
+          {(user) ? ((user.type === 'admin') ? (
+             <>
+             <Route path="/" element={<Landing user={user} />} />
+             {/* path/route for view details page for events */}
+             <Route path="/" element={Landing}/>
+            </>
+          ): (
+            <>
+            <Route path="/" element={<Landing user={user} />} />
+             {/* path/route for book events page for bookings */}
+             <Route path="/" element={Landing}/>
+           </>
+          )): (
+               <Route path="/" element={<Landing />} />
           )}
           <Route path="/signup" element={<SignupForm setUser={setUser}/>} />
           <Route path="/signin" element={<SigninForm setUser={setUser}/>} />

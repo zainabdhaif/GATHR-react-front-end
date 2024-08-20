@@ -1,0 +1,19 @@
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 16px;
+}
+.event-card{
+    max-width: 30%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+
+}
+.card-body{
+    padding-left:10px;
+}
+img{
+    width: 30%;
+    height: 60%;
+}
