@@ -13,6 +13,7 @@ import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import Footer from './components/Footer/Footer';
 import EventList from './components/EventList/EventList';
+import EventDetails from './components/EventDetails/EventDetails';
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
@@ -44,6 +45,7 @@ const App = () => {
           { user ? (
              // Protected Routes:
              <>
+             <Route path="/events/:eventId" element={<EventDetails />} />
             <Route path="/" element={<Dashboard user={user} />} />
            </>
           ) : (
