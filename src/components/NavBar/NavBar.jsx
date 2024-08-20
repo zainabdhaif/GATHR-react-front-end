@@ -24,31 +24,50 @@ const NavBar = ({ user, handleSignout }) => {
         
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            {user ? (
+           {(user) ? (
+            ((user.type === 'admin') ? (
               <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/">Home</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/events">My Events</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="">My Booking</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" onClick={handleSignout} to="">Sign Out</Link>
-                </li>
-              </>
+
+              <li className="nav-item">
+                <Link className="nav-link" to="/">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/events">Events</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="">My Events</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" onClick={handleSignout} to="">Sign Out</Link>
+              </li>
+            </>
             ) : (
               <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/signin">Signin</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/signup">Signup</Link>
-                </li>
-              </>
-            )}
+              <li className="nav-item">
+                <Link className="nav-link" to="/">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/events">Events</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="">My Bookings</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" onClick={handleSignout} to="">Sign Out</Link>
+              </li>
+            </>
+            ))
+           ) : (
+            <>
+            <li className="nav-item">
+              <Link className="nav-link" to="/signin">Signin</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/signup">Signup</Link>
+            </li>
+          </>
+           )}
+   
           </ul>
         </div>
       </div>

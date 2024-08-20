@@ -4,24 +4,32 @@ const signout = () => {
   window.localStorage.removeItem('token');
 };
 
-
-const getUser = () =>  {
+const getUser = () => {
   try {
     const token = localStorage.getItem('token');
     if (!token) return null;
-
-    const rawPayload = token.split('.')[1]
-    const jsonPayload= window.atob(rawPayload)
-
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+      return null;
+    }
+    const rawPayload = parts[1];
+    const jsonPayload = window.atob(rawPayload);
     const user = JSON.parse(jsonPayload);
-    return user;
+    if (user.type) {
+      return {
+        ...user,
+        type: user.type
+      };
+    } else {
+      return user;
+    }
+  
 
   } catch (err) {
-
-    return null
+    return null;
   }
+};
 
-}
 
 const signup = async (formData) => {
   try {
