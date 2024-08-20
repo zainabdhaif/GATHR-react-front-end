@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route ,useNavigate} from 'react-router-dom';
 import authService from './services/authService';
 import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
 import eventService from './services/eventService';
+import bookingService from './services/bookingService';
 
 // Components
 import NavBar from './components/NavBar/NavBar';
@@ -12,8 +13,20 @@ import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import Footer from './components/Footer/Footer';
 import EventList from './components/EventList/EventList';
+import Booking from './components/Booking/Booking';
+import EventDetails from './components/EventDetails/EventDetails';
+import EventForm from './components/EventForm/EventForm';
+import EventEdit from './components/EventEdit/EventEdit';
+import BookingList from './components/BookingList/BookingList';
+
+
+
+
+
 
 const App = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState(authService.getUser());
   const [events, setEvents] = useState([]);
 
@@ -24,15 +37,34 @@ const App = () => {
     };
     
     fetchAllEvents();
-  }, [user]);
+  }, [user, events]);
 
-
+  // const handleAddBooking = () => {
+  //   console.log('Booking added');
+  // }
 
   const handleSignout = () => {
     authService.signout();
     setUser(null);
   }
 
+  const handleAddEvent = async (formData) => {
+    const newEvent = await eventService.create(formData);
+    setEvents([...events, newEvent]); 
+    navigate('/events');
+  }
+  
+  const handleRemoveEvent = async (eventId) => {
+    try {
+      await eventService.deleteEvent(eventId); 
+      navigate("/events"); 
+    } catch (error) {
+      console.error("Error", error);
+ 
+    }
+  };
+  
+  
   return (
     <div className="d-flex flex-column min-vh-100">
       <NavBar user={user} handleSignout={handleSignout}/>
@@ -42,7 +74,7 @@ const App = () => {
           {/* { user ? (
              // Protected Routes:
              <>
-            <Route path="/" element={<Landing user={user} />} />
+            <Route path="/" element={<Dashboard user={user} />} />
            </>
           ) : (
              // Public Route:
@@ -53,14 +85,22 @@ const App = () => {
           {(user) ? ((user.type === 'admin') ? (
              <>
              <Route path="/" element={<Landing user={user} />} />
-             {/* path/route for view details page for events */}
-             <Route path="/" element={Landing}/>
+             <Route path="/events/:eventId" element={<EventDetails handleRemoveEvent={handleRemoveEvent} />} />
+             <Route
+              path="/events/new"
+              element={<EventForm handleAddEvent={handleAddEvent} />}
+            />
+              <Route path="/events/:eventId/edit" element={<EventEdit />}/>
+
+            
             </>
           ): (
             <>
             <Route path="/" element={<Landing user={user} />} />
-             {/* path/route for book events page for bookings */}
-             <Route path="/" element={Landing}/>
+      
+              <Route path="/bookings" element={<BookingList />} />
+
+            <Route path="/events/:eventid/bookings" element={<Booking />} />
            </>
           )): (
                <Route path="/" element={<Landing />} />
