@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 import bookingService from "../../services/bookingService";
+import eventService from "../../services/eventService";
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import auth from "../../services/authService";
 
 const Booking = () => {
-  const [booking, setBooking] = useState(null);
   const [events, setEvent] = useState(null);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
@@ -14,18 +14,13 @@ const Booking = () => {
 
   useEffect(() => {
     const getEvent = async () => {
-      const eventData = await bookingService.show(eventid);
+      const eventData = await eventService.show(eventid);
       setEvent(eventData);
       setStartDate(new Date(eventData.dateStarted));
       setEndDate(new Date(eventData.dateEnded));
     };
     getEvent();
   }, [eventid]);
-
-  //   const handleChange = (evt) => {
-  //     setStartDate(evt);
-  //     // console.log(evt);
-  //   };
 
   const [quantity, setQuantity] = useState(1);
   const increment = () => setQuantity(quantity + 1);
@@ -43,7 +38,6 @@ const Booking = () => {
       quantity: quantity,
     };
     console.log(bookingData);
-
     bookingService.create(bookingData);
   };
 

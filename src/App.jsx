@@ -18,6 +18,12 @@ import Booking from './components/Booking/Booking';
 import EventDetails from './components/EventDetails/EventDetails';
 import EventForm from './components/EventForm/EventForm';
 import EventEdit from './components/EventEdit/EventEdit';
+import BookingList from './components/BookingList/BookingList';
+
+
+
+
+
 
 const App = () => {
   const navigate = useNavigate();
@@ -71,13 +77,15 @@ const App = () => {
              // Protected Routes:
              <>
             <Route path="/" element={<Dashboard user={user} />} />
-             <Route path="/events/:eventId" element={<EventDetails handleRemoveEvent={handleRemoveEvent} />} />
+            <Route path="/events/:eventId" element={<EventDetails handleRemoveEvent={handleRemoveEvent} />} />
              <Route
               path="/events/new"
               element={<EventForm handleAddEvent={handleAddEvent} />}
             />
               <Route path="/events/:eventId/edit" element={<EventEdit />}/>
-          
+              <Route path="/bookings" element={<BookingList />} />
+
+            <Route path="/events/:eventid/bookings" element={<Booking />} />
            </>
            
           ) : (
