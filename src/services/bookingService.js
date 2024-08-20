@@ -1,21 +1,8 @@
-const BASE_URL = `${import.meta.env.VITE_BACKEND_URL}/events`;
-const BASEURL = `${import.meta.env.VITE_BACKEND_URL}/bookings`;
-
-// better to move it to event service 
-const show = async (eventid) => {
-    try {
-        const res = await fetch(`${BASE_URL}/${eventid}`, {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        });
-        return res.json();
-    } catch (error) {
-        console.log(error);
-    }
-};
+const BASE_URL = `${import.meta.env.VITE_BACKEND_URL}/bookings`;
 
 const create = async (bookingData) => {
     try {
-        const res = await fetch(BASEURL, {
+        const res = await fetch(BASE_URL, {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -29,4 +16,30 @@ const create = async (bookingData) => {
     }
 }
 
-export default { show, create };
+const index = async () => {
+    try {
+        const res = await fetch(BASE_URL, {
+            method: 'GET',
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        });
+        return res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const cancel = async (bookid) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${bookid}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+        });
+        return res.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export default { create, index, cancel };

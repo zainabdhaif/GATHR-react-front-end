@@ -16,7 +16,7 @@ import Footer from './components/Footer/Footer';
 import EventList from './components/EventList/EventList';
 import Booking from './components/Booking/Booking';
 import EventDetails from './components/EventDetails/EventDetails';
-
+import BookingList from './components/BookingList/BookingList';
 
 
 
@@ -56,6 +56,7 @@ const App = () => {
             <Route path="/" element={<Dashboard user={user} />} />
             <Route path="/events/:eventId" element={<EventDetails />} />
             <Route path="/events/:eventid/bookings" element={<Booking />} />
+            <Route path="/bookings" element={<BookingList />} />
            </>
           ) : (
              // Public Route:
