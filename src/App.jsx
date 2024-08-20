@@ -8,7 +8,6 @@ import eventService from './services/eventService';
 // Components
 import NavBar from './components/NavBar/NavBar';
 import Landing from './components/Landing/Landing';
-import Dashboard from './components/Dashboard/Dashboard';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import Footer from './components/Footer/Footer';
@@ -44,7 +43,7 @@ const App = () => {
           { user ? (
              // Protected Routes:
              <>
-            <Route path="/" element={<Dashboard user={user} />} />
+            <Route path="/" element={<Landing user={user} />} />
            </>
           ) : (
              // Public Route:
