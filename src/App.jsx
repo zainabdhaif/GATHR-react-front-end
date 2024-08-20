@@ -4,6 +4,7 @@ import authService from './services/authService';
 import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
 import eventService from './services/eventService';
+import bookingService from './services/bookingService';
 
 // Components
 import NavBar from './components/NavBar/NavBar';
@@ -13,7 +14,12 @@ import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import Footer from './components/Footer/Footer';
 import EventList from './components/EventList/EventList';
+import Booking from './components/Booking/Booking';
 import EventDetails from './components/EventDetails/EventDetails';
+
+
+
+
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
@@ -29,7 +35,9 @@ const App = () => {
     fetchAllEvents();
   }, [user]);
 
-
+  // const handleAddBooking = () => {
+  //   console.log('Booking added');
+  // }
 
   const handleSignout = () => {
     authService.signout();
@@ -45,8 +53,9 @@ const App = () => {
           { user ? (
              // Protected Routes:
              <>
-             <Route path="/events/:eventId" element={<EventDetails />} />
             <Route path="/" element={<Dashboard user={user} />} />
+            <Route path="/events/:eventId" element={<EventDetails />} />
+            <Route path="/events/:eventid/bookings" element={<Booking />} />
            </>
           ) : (
              // Public Route:
