@@ -71,7 +71,7 @@ const App = () => {
              // Protected Routes:
              <>
             <Route path="/" element={<Dashboard user={user} />} />
-             <Route path="/events/:eventId" element={<EventDetails />} />
+             <Route path="/events/:eventId" element={<EventDetails handleRemoveEvent={handleRemoveEvent} />} />
              <Route
               path="/events/new"
               element={<EventForm handleAddEvent={handleAddEvent} />}
