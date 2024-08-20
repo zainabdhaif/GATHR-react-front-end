@@ -36,6 +36,9 @@ const EventList = (props) => {
             <p>
               <strong>Price:</strong> ${event.price}
             </p>
+            <Link to={`/events/${event._id}`} className="btn btn-primary btn-sm">
+              Read More
+            </Link>
             <Link key={event._id} to={`/events/${event._id}/bookings`} className="btn btn-primary mt-3">
               Book Now
             </Link>

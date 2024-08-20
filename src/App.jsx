@@ -15,6 +15,11 @@ import SigninForm from './components/SigninForm/SigninForm';
 import Footer from './components/Footer/Footer';
 import EventList from './components/EventList/EventList';
 import Booking from './components/Booking/Booking';
+import EventDetails from './components/EventDetails/EventDetails';
+
+
+
+
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
@@ -46,10 +51,11 @@ const App = () => {
         <Routes>
           <Route path="/events" element={<EventList events={events} />} />
           { user ? (
-            // Protected Routes:
-            <>
-            <Route path="/events/:eventid/bookings" element={<Booking />} />
+             // Protected Routes:
+             <>
             <Route path="/" element={<Dashboard user={user} />} />
+            <Route path="/events/:eventId" element={<EventDetails />} />
+            <Route path="/events/:eventid/bookings" element={<Booking />} />
            </>
           ) : (
              // Public Route:
