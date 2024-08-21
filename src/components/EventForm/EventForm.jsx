@@ -72,13 +72,17 @@ const EventForm = ({ handleAddEvent }) => {
             value={formData.category}
             onChange={handleChange}
           >
-            <option value="sports">Sports</option>
-            <option value="music">Music</option>
-            <option value="food festival">Food Festival</option>
-            <option value="workshop">Workshop</option>
-            <option value="shopping">Shopping</option>
-            <option value="culture">Culture</option>
-            <option value="entertainment">Entertainment</option>
+            <option value="Sports">Sports</option>
+            <option value="Concert">Concert</option>
+            <option value="Food Festival">Food Festival</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Culture">Culture</option>
+            <option value="Art">Art</option>
+            <option value="Science">Science</option>
+            <option value="Motoring">Motoring</option>
+            <option value="Charity">Charity</option>
+            <option value="Educational">Educational</option>
           </select>
         </div>
 
