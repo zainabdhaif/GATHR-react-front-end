@@ -5,6 +5,7 @@ import "./BookingList.css";
 
 const BookingList = () => {
   const [bookings, setBookings] = useState([]);
+  const [openCard, setOpenCard] = useState(null);
 
   useEffect(() => {
     const getBookings = async () => {
@@ -19,6 +20,11 @@ const BookingList = () => {
     location.reload();
     // console.log("Cancel button clicked", bookid);
   };
+
+  const visibility = (bookId) => {
+    setOpenCard((evt) => (evt === bookId ? null : bookId));
+  };
+  console.log(openCard);
 
   if (!bookings) return <h1>Loading...</h1>;
   const user = auth.getUser();
@@ -43,26 +49,35 @@ const BookingList = () => {
                       Date: {new Date(book.date).toLocaleDateString()}
                     </strong>
                   </p>
-                  <p className="mb-1">
-                    <strong>Description: {book.eventid.description}</strong>
-                  </p>
-                  <p className="mb-1">
-                    <strong>Location: {book.eventid.location}</strong>
-                  </p>
-                  <p className="mb-1">
-                    <strong>Category: {book.eventid.category}</strong>
-                  </p>
-                  <p className="mb-1">
-                    <strong>Quantity: {book.quantity}</strong>
-                  </p>
-                  {book.userid === user.id && (
-                    <button
-                      onClick={() => handleCancel(book._id)}
-                      className="btn btn-danger mt-4"
-                    >
-                      Cancel
-                    </button>
+                  <a className="show" onClick={() => visibility(book._id)}>
+                    {openCard === book._id ? "Show Less" : "Show More"}
+                  </a>
+                  {openCard === book._id && (
+                    <>
+                      <p className="mb-1">
+                        <strong>Description: {book.eventid.description}</strong>
+                      </p>
+                      <p className="mb-1">
+                        <strong>Location: {book.eventid.location}</strong>
+                      </p>
+                      <p className="mb-1">
+                        <strong>Category: {book.eventid.category}</strong>
+                      </p>
+                      <p className="mb-1">
+                        <strong>Quantity: {book.quantity}</strong>
+                      </p>
+                    </>
                   )}
+                  <div className="mt-2 text-start">
+                    {book.userid === user.id && (
+                      <button
+                        onClick={() => handleCancel(book._id)}
+                        className="btn btn-danger mt-2"
+                      >
+                        Cancel
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
