@@ -4,24 +4,25 @@ import auth from "../../services/authService";
 import "./BookingList.css";
 
 const BookingList = () => {
-  const [bookings, setBookings] = useState([]);
-
+  const [bookings, setBookings] = useState(null);
+  const user = auth.getUser();
+  
   useEffect(() => {
     const getBookings = async () => {
       const bookingData = await bookingService.index();
       setBookings(bookingData);
     };
-    getBookings();
-  }, []);
+
+    if (user && !bookings) getBookings();
+  }, [user, bookings]);
 
   const handleCancel = (bookid) => {
     bookingService.cancel(bookid);
     location.reload();
-    // console.log("Cancel button clicked", bookid);
+    console.log("Cancel button clicked", bookid);
   };
 
   if (!bookings) return <h1>Loading...</h1>;
-  const user = auth.getUser();
 
   return (
     <>
@@ -35,8 +36,8 @@ const BookingList = () => {
               <div className="card p-3 border-0 shadow-sm">
                 <div className="card-body">
                   <h3 className="card-title d-flex justify-content-between mb-3">
-                    {book.eventid.name}
-                    <span>{book.eventid.price * book.quantity}BD</span>
+                    {book.eventid?.name}
+                    <span>{book.eventid?.price * book.quantity}BD</span>
                   </h3>
                   <p className="mb-1">
                     <strong>
@@ -44,13 +45,13 @@ const BookingList = () => {
                     </strong>
                   </p>
                   <p className="mb-1">
-                    <strong>Description: {book.eventid.description}</strong>
+                    <strong>Description: {book.eventid?.description}</strong>
                   </p>
                   <p className="mb-1">
-                    <strong>Location: {book.eventid.location}</strong>
+                    <strong>Location: {book.eventid?.location}</strong>
                   </p>
                   <p className="mb-1">
-                    <strong>Category: {book.eventid.category}</strong>
+                    <strong>Category: {book.eventid?.category}</strong>
                   </p>
                   <p className="mb-1">
                     <strong>Quantity: {book.quantity}</strong>

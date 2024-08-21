@@ -77,8 +77,6 @@ const App = () => {
 element={<EventForm handleAddEvent={handleAddEvent} />}
             />
               <Route path="/events/:eventId/edit" element={<EventEdit />}/>
-
-            
             </>
           ): (
             <>

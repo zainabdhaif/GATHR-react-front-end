@@ -25,9 +25,9 @@ const NavBar = ({ user, handleSignout }) => {
               <li className="nav-item">
                 <Link className="nav-link" to="/events">Events</Link>
               </li>
-              {/* <li className="nav-item">
-                <Link className="nav-link" to="/events">My Events</Link>
-              </li> */}
+              <li className="nav-item">
+                <Link className="nav-link" to="/events/new">Add Event</Link>
+              </li>
               <li className="nav-item">
                 <Link className="nav-link" onClick={handleSignout} to="">Sign Out</Link>
               </li>
