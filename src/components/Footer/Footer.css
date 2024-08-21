@@ -2,6 +2,7 @@
     background-color: #a5c9b272;
     padding: 45px 0;
     text-align: left;
+    float:inline-end;
   }
   
   .site-footer a {

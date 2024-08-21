@@ -34,7 +34,7 @@ const SigninForm = (props) => {
   };
 
   return (
-    <main className="container mt-5">
+    <main className="container mt-5 text-black">
       <div className="row justify-content-center">
         <div className="log col-md-6">
           <h1 className="text-center text-black mb-4">Log In</h1>
