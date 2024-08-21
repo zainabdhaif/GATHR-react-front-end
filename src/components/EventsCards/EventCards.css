@@ -3,11 +3,18 @@
     flex-direction: row;
     justify-content: space-around;
     padding-top: 16px;
+    flex-wrap:wrap;
+    overflow-x: auto; /* Add this line to enable horizontal scrolling */
+    white-space: nowrap; /* Add this line to prevent the cards from wrapping */
+    margin-bottom: 20px;
 }
+
 .event-card{
     max-width: 30%;
     border: 1px solid #ccc;
     border-radius: 10px;
+    margin-bottom: 20px;
+ 
 
 }
 .card-body{

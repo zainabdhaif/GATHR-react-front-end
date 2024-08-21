@@ -6,23 +6,36 @@ import eventService from "../../services/eventService";
 
 const Landing = () => {
   const [user, setUser] = useState(authService.getUser());
-  const [cards, setCards] = useState([]);
-  useEffect(() => {
-    const fetchLatestEvents = async () => {
-      try {
-        const eventsData = await eventService.index();
-        // Sort the events in descending order by creation date
-        const sortedEvents = eventsData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        // Take the first 3 events
-        const latestEvents = sortedEvents.slice(0, 3);
-        setCards(latestEvents);
-      } catch (error) {
-        console.error('Error fetching events:', error);
-      }
-    };
+  const [events, setEvents] = useState([]);
 
-    fetchLatestEvents();
-  }, [user]);
+  // const [cards, setCards] = useState([]);
+  // useEffect(() => {
+  //   const fetchLatestEvents = async () => {
+  //     try {
+  //       const eventsData = await eventService.index();
+  //       // Sort the events in descending order by creation date
+  //       const sortedEvents = eventsData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  //       // Take the first 3 events
+  //       const latestEvents = sortedEvents.slice(0, 3);
+  //       setCards(latestEvents);
+  //     } catch (error) {
+  //       console.error('Error fetching events:', error);
+  //     }
+  //   };
+
+  //   fetchLatestEvents();
+  // }, [user]);
+
+
+  useEffect(() => {
+    const fetchAllEvents = async () => {
+      const eventsData = await eventService.index();
+      setEvents(eventsData);
+    };
+    
+    fetchAllEvents();
+  }, [user, events]);
+
 
   return (
     <main>
@@ -38,8 +51,7 @@ const Landing = () => {
       <div>
         <h2>Upcoming Events</h2>
         <div>
-        <EventCards cards={cards}/>
-
+        <EventCards events={events}/>
         </div>
       </div>
     </main>

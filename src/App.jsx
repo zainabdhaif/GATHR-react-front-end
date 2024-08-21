@@ -70,25 +70,14 @@ const App = () => {
       <NavBar user={user} handleSignout={handleSignout}/>
       <main className="flex-grow-1">
         <Routes>
-          <Route path="/events" element={<EventList events={events} />} />
-          {/* { user ? (
-             // Protected Routes:
-             <>
-            <Route path="/" element={<Dashboard user={user} />} />
-           </>
-          ) : (
-             // Public Route:
-             <Route path="/" element={<Landing />} />
-             
-          )} */}
+          <Route path="/events" element={<EventList user={user} events={events} />} />
 
           {(user) ? ((user.type === 'admin') ? (
              <>
              <Route path="/" element={<Landing user={user} />} />
              <Route path="/events/:eventId" element={<EventDetails handleRemoveEvent={handleRemoveEvent} />} />
-             <Route
-              path="/events/new"
-              element={<EventForm handleAddEvent={handleAddEvent} />}
+             <Route path="/events/new"
+element={<EventForm handleAddEvent={handleAddEvent} />}
             />
               <Route path="/events/:eventId/edit" element={<EventEdit />}/>
 

@@ -1,16 +1,27 @@
 import "./EventCards.css";
 import { useState} from 'react';
 import authService from '../../services/authService';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const EventCards = (props) => {
   
   const [user, setUser] = useState(authService.getUser());
+  // const [events, setEvents] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchAllEvents = async () => {
+  //     const eventsData = await eventService.index();
+  //     setEvents(eventsData);
+  //   };
+    
+  //   fetchAllEvents();
+  // }, [user, events]);
+
   return (
     <>
     <div className="cards-container">
 
-    {props.cards.map((card) => (
+    {props.events.slice(0, 3).map((card) => (
       <div key={card._id} className="event-card">
         <img className="card-img-top" src={card.image} />
         <div className="card-body">
@@ -26,9 +37,13 @@ const EventCards = (props) => {
             </p>
             {(user) ? (
               ((user.type === 'admin')? (  
-                <button>view details</button>
+               <Link to={`/events/${card._id}`}><button>view details</button>
+               </Link> 
+
             ) : (
-              <button>book</button>
+              <Link to={`/events/${card._id}/bookings`}><button>book</button>
+               </Link> 
+          
             ))
             ): (<p></p>)}
    
