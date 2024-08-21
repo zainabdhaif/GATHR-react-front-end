@@ -53,7 +53,7 @@ const Landing = () => {
       <div>
         <h2>Upcoming Events</h2>
         <div>
-        <EventCards events={events}/>
+        <EventCards cards={events}/>
         </div>
       </div>
     </main>

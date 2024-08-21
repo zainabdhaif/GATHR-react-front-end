@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-sm-12 col-md-6">
             <h6>About</h6>
-            <p class="about">
+            <p className="about">
             Gathr connects people through fascinating events and activities.
              Our mission is to create memorable experiences and foster community engagement through a variety of events.
             </p>
@@ -18,17 +18,17 @@ const Footer = () => {
             <h6>Categories</h6>
             <ul className="footer-links">
               <li><a href="/events">Events</a></li>
-              <li><a href="/categories">Categories</a></li>
+              <li><a href="/">Categories</a></li>
             </ul>
           </div>
 
           <div className="col-xs-6 col-md-3">
             <h6>Quick Links</h6>
             <ul className="footer-links">
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/contact">Contact Us</a></li>
-              <li><a href="/privacy">Privacy Policy</a></li>
-              <li><a href="/terms">Terms & Conditions</a></li>
+              <li><a href="/">About Us</a></li>
+              <li><a href="/">Contact Us</a></li>
+              <li><a href="/">Privacy Policy</a></li>
+              <li><a href="/">Terms & Conditions</a></li>
             </ul>
           </div>
         </div>
@@ -39,7 +39,7 @@ const Footer = () => {
           <div>
             <p className="copyright-text">
               Copyright &copy; 2024 All Rights Reserved by{' '}
-              <a href="https://Gathr.com">Gathr</a>.
+              <a href="">Gathr</a>.
             </p>
           </div>
 

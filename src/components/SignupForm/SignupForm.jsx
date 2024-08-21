@@ -4,16 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const SignupForm = (props) => {
   const navigate = useNavigate();
-  const [message, setMessage] = useState(['']);
+  const [message, setMessage] = useState(null);
   const [formData, setFormData] = useState({
     username: '',
     password: '',
     passwordConf: '',
   });
-
-  const updateMessage = (msg) => {
-    setMessage(msg);
-  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,12 +18,11 @@ const SignupForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      updateMessage('');
       const newUserResponse = await authService.signup(formData);
       props.setUser(newUserResponse.user);
       navigate('/');
     } catch (err) {
-      updateMessage(err.message);
+      setMessage(err.message);
     }
   };
 

@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import auth from "../../services/authService";
 import {useNavigate} from 'react-router-dom';
+import "./Booking.css";
 
 const Booking = () => {
   const navigate = useNavigate();

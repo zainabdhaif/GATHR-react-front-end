@@ -1,5 +1,5 @@
 import "./EventCards.css";
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import authService from '../../services/authService';
 import { Link } from 'react-router-dom';
 
@@ -11,13 +11,13 @@ const EventCards = (props) => {
     <>
     <div className="cards-container">
 
-    {props.events.slice(0, 3).map((card) => (
+    {props.cards.slice(0, 3).map((card) => (
       <div key={card._id} className="event-card">
         <img className="card-img-top" src={card.image} />
         <div className="card-body">
-        <h5 className="card-title">{card.name}</h5>
+        <h5 className="test">{card.name}</h5>
         <p className="card-text">{card.location}</p>
-        <p className="mb-0">
+        <p className="mb-0">  
               Starting Date{' '}
               {new Date(card.dateStarted).toLocaleDateString()}
             </p>
