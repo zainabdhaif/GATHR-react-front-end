@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import eventService from "../../services/eventService";
-import './EventDetails.css'
+import './EventDetails.css';
 
 const EventDetails = (props) => {
   const { eventId } = useParams();
@@ -16,35 +16,33 @@ const EventDetails = (props) => {
     getEvent();
   }, [eventId]);
 
-  // const handleRemoveEvent = async () => {
-  //   try {
-  //     await eventService.delete(eventId); 
-  //     navigate("/events"); 
-  //   } catch (error) {
-  //     console.error("Error", error);
- 
-  //   }
-  // };
-
   if (!event) {
     return <main className="container mt-4"><h3>Loading...</h3></main>;
   }
 
   return (
     <main className="container mt-4">
-      <header className="mb-4">
-        <h1 className="display-4">{event.name}</h1>
+      <header
+        className="header mb-4"
+        style={{ 
+          backgroundImage: `url(${event.image})`
+        }}
+      >
+        <div className="cover">
+          <h1 className="display-4">{event.name}</h1>
+        </div>
       </header>
+
       <div className="row mb-4">
         <div className="col-md-8">
           <p className="text-muted">{event.category}</p>
           <p>{event.description}</p>
-          <p><strong>Location:</strong> {event.location}</p>
-          <p><strong>Price:</strong> ${event.price}</p>
+          <p>Location: {event.location}</p>
+          <p>Price: {event.price} BD</p>
         </div>
-        <div className="col-md-4">
-          <p><strong>Starts:</strong> {new Date(event.dateStarted).toLocaleDateString()}</p>
-          <p><strong>Ends:</strong> {new Date(event.dateEnded).toLocaleDateString()}</p>
+        <div className="col-md-4 ">
+          <p>Starts: {new Date(event.dateStarted).toLocaleDateString()}</p>
+          <p>Ends: {new Date(event.dateEnded).toLocaleDateString()}</p>
         </div>
       </div>
       <div className="d-flex justify-content-between">
