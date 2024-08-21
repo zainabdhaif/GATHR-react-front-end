@@ -1,10 +1,30 @@
-import './EventList.css'
+import './EventList.css';
 import { Link } from 'react-router-dom';
+import { useState } from "react";
 
 const EventList = (props) => {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const categories = Array.from(new Set(props.events.map(event => event.category)));
+  // console.log(categories);
+  
+  const events = props.events.filter((event) => {
+    if (event.category === selectedCategory) {
+      return event;
+    } else if (selectedCategory === null) {
+      return event;
+    }
+  });
+  
   return (
     <div className="row">
-      {props.events.map((event) => (
+      <div className="buttons">
+        {/* <h6>Filters</h6> */}
+        <button className="btn btn-outline-success me-2 mb-2" onClick={() => setSelectedCategory(null)}>All</button>
+        {categories.map((category) => (
+          <button className="btn btn-outline-success me-2 mb-2" key={category} onClick={() => setSelectedCategory(category)}>{category}</button>
+        ))}
+      </div>
+      {events.map((event) => (
         <div key={event._id} className="col-md-4 col-sm-6 mb-4">
           <div className="card card-block">
           
