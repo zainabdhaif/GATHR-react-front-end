@@ -1,0 +1,35 @@
+.site-footer {
+    background-color: #a5c9b272;
+    padding: 45px 0;
+    color: #252424;
+  }
+  
+  .site-footer a {
+    color: #151515;
+  }
+  
+  
+  .site-footer h6 {
+    color: #615569;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    letter-spacing: 2px;
+  }
+  
+  .site-footer .footer-links {
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .site-footer .footer-links a {
+    display: block;
+    color: #0e0d0d;
+  }
+  
+  .copyright-text {
+    margin: 0;
+    color: #3a3939;
+    text-align: center;
+  }
+  

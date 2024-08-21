@@ -25,35 +25,50 @@ const BookingList = () => {
 
   return (
     <>
-      <div>
-        <h1>Your Bookings</h1>
-        <div>
+      <main className="container mt-4">
+        <div className="title mb-4">
+          <h1 className="text-center">My Bookings</h1>
+        </div>
+        <div className="row">
           {bookings.map((book) => (
-            <div key={book._id}>
-              <h3>{book.eventid.name}</h3>
-              <p>
-                <strong>Description:</strong> {book.eventid.description}
-              </p>
-              <p>
-                <strong>Location:</strong> {book.eventid.location}
-              </p>
-              <p>
-                <strong>Category:</strong> {book.eventid.category}
-              </p>
-              <p>
-                <strong>Quantity:</strong> {book.quantity}
-              </p>
-              <p>
-                <strong>Date: </strong>
-                {new Date(book.date).toLocaleDateString()}
-              </p>
-              {book.userid === user.id && (
-                <button onClick={() => handleCancel(book._id)}>Cancel</button>
-              )}
+            <div key={book._id} className="col-md-4 mb-4">
+              <div className="card p-3 border-0 shadow-sm">
+                <div className="card-body">
+                  <h3 className="card-title d-flex justify-content-between mb-3">
+                    {book.eventid.name}
+                    <span>{book.eventid.price * book.quantity}BD</span>
+                  </h3>
+                  <p className="mb-1">
+                    <strong>
+                      Date: {new Date(book.date).toLocaleDateString()}
+                    </strong>
+                  </p>
+                  <p className="mb-1">
+                    <strong>Description: {book.eventid.description}</strong>
+                  </p>
+                  <p className="mb-1">
+                    <strong>Location: {book.eventid.location}</strong>
+                  </p>
+                  <p className="mb-1">
+                    <strong>Category: {book.eventid.category}</strong>
+                  </p>
+                  <p className="mb-1">
+                    <strong>Quantity: {book.quantity}</strong>
+                  </p>
+                  {book.userid === user.id && (
+                    <button
+                      onClick={() => handleCancel(book._id)}
+                      className="btn btn-danger mt-4"
+                    >
+                      Cancel
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
           ))}
         </div>
-      </div>
+      </main>
     </>
   );
 };

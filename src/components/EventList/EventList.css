@@ -52,3 +52,15 @@
     border-color:#7da075;
   }
   
+  .buttons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px;
+    align-items: baseline;
+  }
+
+  .search{
+    margin-left: 40px;
+    margin-right: 40px;
+  }

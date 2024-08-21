@@ -25,6 +25,7 @@ const EventForm = ({ handleAddEvent }) => {
   return (
     <main className="container mt-4">
       <form onSubmit={handleSubmit} className="p-4 border rounded shadow-sm bg-light">
+        <h3>Add New Event</h3>
         <div className="mb-3">
           <label htmlFor="name-input" className="form-label">Name</label>
           <input
@@ -71,13 +72,17 @@ const EventForm = ({ handleAddEvent }) => {
             value={formData.category}
             onChange={handleChange}
           >
-            <option value="sports">Sports</option>
-            <option value="music">Music</option>
-            <option value="food festival">Food Festival</option>
-            <option value="workshop">Workshop</option>
-            <option value="shopping">Shopping</option>
-            <option value="culture">Culture</option>
-            <option value="entertainment">Entertainment</option>
+            <option value="Sports">Sports</option>
+            <option value="Concert">Concert</option>
+            <option value="Food Festival">Food Festival</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Culture">Culture</option>
+            <option value="Art">Art</option>
+            <option value="Science">Science</option>
+            <option value="Motoring">Motoring</option>
+            <option value="Charity">Charity</option>
+            <option value="Educational">Educational</option>
           </select>
         </div>
 

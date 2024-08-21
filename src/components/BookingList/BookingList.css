@@ -1,0 +1,10 @@
+strong {
+  font-size: 13px;
+}
+
+span {
+  font-size: 17px;
+  color: green;
+  align-items: center;
+  display: flex;
+}
