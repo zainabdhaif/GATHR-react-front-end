@@ -50,17 +50,32 @@ const App = () => {
     navigate('/events');
   }
   
+  // const handleRemoveEvent = async (eventId) => {
+  //   try {
+  //     await eventService.deleteEvent(eventId); 
+  //     navigate("/events"); 
+  //     location.reload();
+  //   } catch (error) {
+  //     console.error("Error", error);
+ 
+  //   }
+  // };
+
   const handleRemoveEvent = async (eventId) => {
     try {
-      await eventService.deleteEvent(eventId); 
-      navigate("/events"); 
-      location.reload();
+      // Add confirmation pop-up before deleting
+      if (window.confirm('Are you sure you want to delete this event?')) {
+        await eventService.deleteEvent(eventId);
+        navigate("/events");
+        location.reload();
+      }
     } catch (error) {
       console.error("Error", error);
- 
     }
   };
+
   
+
   
   return (
     <div className="d-flex flex-column min-vh-100">

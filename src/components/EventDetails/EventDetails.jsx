@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import eventService from "../../services/eventService";
 import './EventDetails.css'
+import { Alert, Button } from 'react-bootstrap';
 
 const EventDetails = (props) => {
   const { eventId } = useParams();
@@ -60,6 +61,7 @@ const EventDetails = (props) => {
         >
           Delete
         </button>
+
       </div>
     </main>
   );

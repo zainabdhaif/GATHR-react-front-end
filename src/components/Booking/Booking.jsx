@@ -1,12 +1,14 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import bookingService from "../../services/bookingService";
 import eventService from "../../services/eventService";
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import auth from "../../services/authService";
+import {useNavigate} from 'react-router-dom';
 
 const Booking = () => {
+  const navigate = useNavigate();
   const [events, setEvent] = useState(null);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
@@ -39,6 +41,7 @@ const Booking = () => {
     };
     console.log(bookingData);
     bookingService.create(bookingData);
+    navigate('/bookings');
   };
 
   return (
