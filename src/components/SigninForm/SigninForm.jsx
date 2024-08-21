@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import authService from '../../services/authService';
+import './SigninForm.css';
+ 
 
 const SigninForm = (props) => {
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ const SigninForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const user = await authService.signin(formData); // TODO build signin service function
+      const user = await authService.signin(formData); 
 
       props.setUser(user);
       navigate('/');
@@ -34,8 +36,8 @@ const SigninForm = (props) => {
   return (
     <main className="container mt-5">
       <div className="row justify-content-center">
-        <div className="col-md-6">
-          <h1 className="text-center mb-4">Log In</h1>
+        <div className="log col-md-6">
+          <h1 className="text-center text-black mb-4">Log In</h1>
           {message && <div className="alert alert-danger">{message}</div>}
           <form autoComplete="off" onSubmit={handleSubmit}>
             <div className="mb-3">

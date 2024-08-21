@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import eventService from "../../services/eventService";
-// import './EventEdit.css'; 
+ import './Edit.css'; 
 
 const EventEdit = () => {
   const { eventId } = useParams();
@@ -62,7 +62,7 @@ const EventEdit = () => {
   }
 
   return (
-    <main className="container mt-4">
+    <main className="container-edit mt-4">
       <h1>Edit Event</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
