@@ -34,7 +34,7 @@ const Landing = () => {
     };
     
     fetchAllEvents();
-  }, [user, events]);
+  }, []);
 
 
   return (

@@ -5,14 +5,25 @@ import eventService from '../../services/eventService';
 import authService from '../../services/authService';
 
 
-const EventList = (props) => {
+const EventList = () => {
   const [user, setUser] = useState(authService.getUser());
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [searchTerm, setSearch] = useState(""); 
+  const [events, setEvents] = useState([]);
 
-  const categories = Array.from(new Set(props.events.map(event => event.category)));
+  useEffect(() => {
+    const fetchAllEvents = async () => {
+      const eventsData = await eventService.index();
+      setEvents(eventsData);
+      console.log(eventsData)
+    };
+    
+   fetchAllEvents();
+  }, []);
+
+  const categories = Array.from(new Set(events.map(event => event.category)));
   
-  const events = props.events.filter((event) => {
+  const Events = events.filter((event) => {
     const matchesCategory = selectedCategory === null || event.category === selectedCategory;
     const matchesSearch = event.name.toLowerCase().includes(searchTerm.toLowerCase());
     
@@ -39,8 +50,8 @@ const EventList = (props) => {
         />
       </div>
 
-      {events.length > 0 ? (
-        events.map((event) => (
+      {Events.length > 0 ? (
+        Events.map((event) => (
           <div key={event._id} className="col-md-4 col-sm-6 mb-4">
             <div className="card card-block">
               <img

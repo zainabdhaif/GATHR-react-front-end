@@ -24,16 +24,16 @@ const App = () => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(authService.getUser());
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState(null);
 
-  useEffect(() => {
-    const fetchAllEvents = async () => {
-      const eventsData = await eventService.index();
-      setEvents(eventsData);
-    };
+  // useEffect(() => {
+  //   const fetchAllEvents = async () => {
+  //     const eventsData = await eventService.index();
+  //     setEvents(eventsData);
+  //   };
     
-    fetchAllEvents();
-  }, []);
+  //   if(user && !events) fetchAllEvents();
+  // }, []);
 
   // const handleAddBooking = () => {
   //   console.log('Booking added');
@@ -67,14 +67,13 @@ const App = () => {
       <NavBar user={user} handleSignout={handleSignout}/>
       <main className="flex-grow-1">
         <Routes>
-          <Route path="/events" element={<EventList user={user} events={events} />} />
+          <Route path="/events" element={<EventList user={user} />} />
 
           {(user) ? ((user.type === 'admin') ? (
              <>
              <Route path="/" element={<Landing user={user} />} />
              <Route path="/events/:eventId" element={<EventDetails handleRemoveEvent={handleRemoveEvent} />} />
-             <Route path="/events/new"
-element={<EventForm handleAddEvent={handleAddEvent} />}
+             <Route path="/events/new" element={<EventForm handleAddEvent={handleAddEvent} />}
             />
               <Route path="/events/:eventId/edit" element={<EventEdit />}/>
             </>

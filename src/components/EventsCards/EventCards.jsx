@@ -1,21 +1,11 @@
 import "./EventCards.css";
-import { useState} from 'react';
+import { useState, useEffect } from 'react';
 import authService from '../../services/authService';
 import { Link } from 'react-router-dom';
 
 const EventCards = (props) => {
   
   const [user, setUser] = useState(authService.getUser());
-  // const [events, setEvents] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchAllEvents = async () => {
-  //     const eventsData = await eventService.index();
-  //     setEvents(eventsData);
-  //   };
-    
-  //   fetchAllEvents();
-  // }, [user, events]);
 
   return (
     <>
