@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import authService from '../../services/authService';
 import eventService from "../../services/eventService";
 
+
 const Landing = () => {
   const [user, setUser] = useState(authService.getUser());
   const [events, setEvents] = useState([]);
@@ -39,12 +40,13 @@ const Landing = () => {
 
   return (
     <main>
+
       <div className="video-container">
         <video
           autoPlay
           muted
           loop
-          className="video"
+       className="video"
           src="/video/video.mp4"
         ></video>
       </div>

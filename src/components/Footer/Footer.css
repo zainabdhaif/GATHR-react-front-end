@@ -1,14 +1,19 @@
 .site-footer {
     background-color: #a5c9b272;
     padding: 45px 0;
-    color: #252424;
+    text-align: left;
+    float:inline-end;
   }
   
   .site-footer a {
     color: #151515;
+    text-decoration: none;
+    text-align: left;
   }
   
-  
+  .about{
+    color: #3a393962;
+  }
   .site-footer h6 {
     color: #615569;
     font-size: 16px;
@@ -24,7 +29,7 @@
   
   .site-footer .footer-links a {
     display: block;
-    color: #0e0d0d;
+    color: #0e0d0d5f;
   }
   
   .copyright-text {

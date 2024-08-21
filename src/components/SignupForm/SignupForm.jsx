@@ -39,9 +39,9 @@ const SignupForm = (props) => {
 
   return (
     <main className="container mt-5">
-      <div className="row justify-content-center">
+      <div className="row justify-content-center text-black">
         <div className="col-md-6">
-          <h1 className="text-center mb-4">Sign Up</h1>
+          <h1 className="text-center text-black mb-4">Sign Up</h1>
           {message && <div className="alert alert-danger">{message}</div>}
           <form onSubmit={handleSubmit}>
             <div className="mb-3">

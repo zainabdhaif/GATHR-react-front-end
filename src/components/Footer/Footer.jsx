@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-sm-12 col-md-6">
             <h6>About</h6>
-            <p>
+            <p class="about">
             Gathr connects people through fascinating events and activities.
              Our mission is to create memorable experiences and foster community engagement through a variety of events.
             </p>
@@ -32,11 +32,11 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <hr />
+        {/* <hr /> */}
       </div>
       <div className="container">
         <div className="row">
-          <div className="col-md-8 col-sm-6 col-xs-12">
+          <div>
             <p className="copyright-text">
               Copyright &copy; 2024 All Rights Reserved by{' '}
               <a href="https://Gathr.com">Gathr</a>.
