@@ -21,10 +21,6 @@ import EventEdit from './components/EventEdit/EventEdit';
 import BookingList from './components/BookingList/BookingList';
 
 
-
-
-
-
 const App = () => {
   const navigate = useNavigate();
 
@@ -39,7 +35,7 @@ const App = () => {
     };
     
     fetchAllEvents();
-  }, [user, events]);
+  }, []);
 
   // const handleAddBooking = () => {
   //   console.log('Booking added');
@@ -60,6 +56,7 @@ const App = () => {
     try {
       await eventService.deleteEvent(eventId); 
       navigate("/events"); 
+      location.reload();
     } catch (error) {
       console.error("Error", error);
  

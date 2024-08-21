@@ -42,31 +42,46 @@ const Booking = () => {
   };
 
   return (
-    <div>
-      <img src={events.image} alt={events.name} />
-      <h1>{events.name}</h1>
-      <p>Description: {events.description}</p>
-      <div className="date">
-        <label>Select The Date:</label>
-        <DatePicker
-          selected={startDate}
-          onChange={(evt) => setStartDate(evt)}
-          minDate={new Date(events.dateStarted)}
-          maxDate={endDate}
-          //   dateFormat="MMMM d, YYYY"
-        />
+    <div className="container mt-4">
+      <div className="row">
+        <div className="col-md-6">
+          <img
+            src={events.image}
+            alt={events.name}
+            className="img-fluid rounded"
+          />
+        </div>
+        <div className="col-md-6">
+          <h1 className="mb-3">{events.name}</h1>
+          <p className="lead">{events.description}</p>
+          <div className="mb-3">
+            <label className="form-label">Select The Date:</label> <br />
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              minDate={new Date(events.dateStarted)}
+              maxDate={endDate}
+              className="form-control"
+            />
+          </div>
+          <p>
+            <strong>Location: {events.location}</strong>
+          </p>
+          <p>
+            <strong>Price: {events.price}BD</strong>
+          </p>
+          <p>
+            <strong>Category: {events.category}</strong>
+          </p>
+          <div className="d-flex align-items-center mb-3">
+            <button onClick={decrement} className="btn btn-outline-secondary me-2"> - </button>
+              <span className="mx-2">{quantity}</span>
+            <button onClick={increment} className="btn btn-outline-secondary ms-2"> + </button>
+          </div>
+          <h3 className="mb-4">Total Price: {events.price * quantity}BD</h3>
+          <button onClick={handleBooking} className="btn btn-primary">Book</button>
+        </div>
       </div>
-      <p>Location: {events.location}</p>
-      <p>Price: {events.price} BD</p>
-      <p>Category: {events.category}</p>
-      <div>
-        <button onClick={decrement}>-</button>
-        <span>{quantity}</span>
-        <button onClick={increment}>+</button>
-      </div>
-      <h3 htmlFor="">Price {events.price * quantity} BD</h3>
-      <br />
-      <button onClick={handleBooking}>Book</button>
     </div>
   );
 };
