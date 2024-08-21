@@ -2,11 +2,12 @@ import './EventList.css'
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import eventService from '../../services/eventService';
+import authService from '../../services/authService';
 
 
 
 const EventList = (props) => {
-  const [events, setEvents] = useState([]);
+  const [user, setUser] = useState(authService.getUser());
 
   // useEffect(() => {
   //   const fetchAllEvents = async () => {
@@ -32,7 +33,7 @@ const EventList = (props) => {
             <h5 className="card-title mt-3 mb-3">{event.name}</h5>
             <p className="mb-0">Starting Date{' '}{new Date(event.dateStarted).toLocaleDateString()}</p>
 
-            {/* {(user) ? (
+            {(user) ? (
               ((user.type === 'admin') ? (
                 <Link to={`/events/${event._id}`} className="btn btn-primary btn-sm">
                 Read More
@@ -42,7 +43,7 @@ const EventList = (props) => {
               </Link>))
               ) : (
                 <p></p>
-              )} */}
+              )}
           </div>
         </div>
       ))}
