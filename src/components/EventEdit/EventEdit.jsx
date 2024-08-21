@@ -2,6 +2,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import eventService from "../../services/eventService";
 // import './EventEdit.css'; 
+import Swal from 'sweetalert2';
+
 
 const EventEdit = () => {
   const { eventId } = useParams();
@@ -46,14 +48,32 @@ const EventEdit = () => {
     setFormData(prevState => ({ ...prevState, [name]: value }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await eventService.update(eventId, formData);
+  //     navigate(`/events/${eventId}`); 
+  //   } catch (error) {
+  //     console.error("Error updating event:", error);
+   
+  //   }
+  // };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await eventService.update(eventId, formData);
-      navigate(`/events/${eventId}`); 
+      Swal.fire({
+        title: 'Event Updated!',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1500
+      }).then(() => {
+        navigate(`/events/${eventId}`);
+      });
     } catch (error) {
       console.error("Error updating event:", error);
-   
     }
   };
 

@@ -39,8 +39,7 @@ const BookingList = () => {
       }
     })
   };
-
-
+  
   if (!bookings) return <h1>Loading...</h1>;
 
   return (
