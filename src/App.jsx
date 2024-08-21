@@ -5,6 +5,7 @@ import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
 import eventService from './services/eventService';
 import bookingService from './services/bookingService';
+import Swal from 'sweetalert2';
 
 // Components
 import NavBar from './components/NavBar/NavBar';
@@ -47,35 +48,29 @@ const App = () => {
   const handleAddEvent = async (formData) => {
     const newEvent = await eventService.create(formData);
     setEvents([...events, newEvent]); 
-    navigate('/events');
+    navigate("/events");
   }
   
-  // const handleRemoveEvent = async (eventId) => {
-  //   try {
-  //     await eventService.deleteEvent(eventId); 
-  //     navigate("/events"); 
-  //     location.reload();
-  //   } catch (error) {
-  //     console.error("Error", error);
- 
-  //   }
-  // };
-
   const handleRemoveEvent = async (eventId) => {
     try {
-      // Add confirmation pop-up before deleting
-      if (window.confirm('Are you sure you want to delete this event?')) {
-        await eventService.deleteEvent(eventId);
-        navigate("/events");
-        location.reload();
-      }
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await eventService.deleteEvent(eventId);
+          navigate("/events");
+        }
+      });
     } catch (error) {
       console.error("Error", error);
     }
   };
-
-  
-
   
   return (
     <div className="d-flex flex-column min-vh-100">

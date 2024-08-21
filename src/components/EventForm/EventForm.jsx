@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import './EventForm.css'
+import './EventForm.css';
+import {useNavigate} from 'react-router-dom';
 
 const EventForm = ({ handleAddEvent }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -20,6 +22,8 @@ const EventForm = ({ handleAddEvent }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleAddEvent(formData);
+    navigate("/events");
+    
   };
 
   return (

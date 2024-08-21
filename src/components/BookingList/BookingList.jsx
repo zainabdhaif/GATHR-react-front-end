@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import bookingService from "../../services/bookingService";
 import auth from "../../services/authService";
 import "./BookingList.css";
+import Swal from 'sweetalert2';
 
 const BookingList = () => {
   const [bookings, setBookings] = useState(null);
@@ -16,11 +17,29 @@ const BookingList = () => {
     if (user && !bookings) getBookings();
   }, [user, bookings]);
 
+  // const handleCancel = (bookid) => {
+  //   bookingService.cancel(bookid);
+  //   location.reload();
+  //   console.log("Cancel button clicked", bookid);
+  // };
   const handleCancel = (bookid) => {
-    bookingService.cancel(bookid);
-    location.reload();
-    console.log("Cancel button clicked", bookid);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, cancel it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        bookingService.cancel(bookid);
+        location.reload();
+        console.log("Cancel button clicked", bookid);
+      }
+    })
   };
+
 
   if (!bookings) return <h1>Loading...</h1>;
 

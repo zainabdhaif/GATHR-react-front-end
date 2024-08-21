@@ -1,8 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import eventService from "../../services/eventService";
-import './EventDetails.css'
-import { Alert, Button } from 'react-bootstrap';
+import './EventDetails.css';
 
 const EventDetails = (props) => {
   const { eventId } = useParams();
@@ -16,16 +15,6 @@ const EventDetails = (props) => {
     }
     getEvent();
   }, [eventId]);
-
-  // const handleRemoveEvent = async () => {
-  //   try {
-  //     await eventService.delete(eventId); 
-  //     navigate("/events"); 
-  //   } catch (error) {
-  //     console.error("Error", error);
- 
-  //   }
-  // };
 
   if (!event) {
     return <main className="container mt-4"><h3>Loading...</h3></main>;
@@ -57,11 +46,9 @@ const EventDetails = (props) => {
         </button>
         <button
           className="btn btn-danger mt-3"
-          onClick={() => props.handleRemoveEvent(eventId)}
-        >
+          onClick={() => props.handleRemoveEvent(eventId)}>
           Delete
         </button>
-
       </div>
     </main>
   );
