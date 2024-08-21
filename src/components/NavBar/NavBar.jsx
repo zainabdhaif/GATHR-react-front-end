@@ -7,17 +7,7 @@ const NavBar = ({ user, handleSignout }) => {
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">GATHR</Link>
         
-        <div className="container">
-          <div className="row height d-flex justify-content-center align-items-center">
-            <div className="col-md-6">
-              <div className="form">
-                <i className="fa fa-search"></i>
-                <input type="text" className="form-control form-input" placeholder="Search Event or Category ..." />
-                <span className="left-pan"><i className="fa fa-microphone"></i></span>
-              </div>
-            </div>
-          </div>
-        </div>
+      
         
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>

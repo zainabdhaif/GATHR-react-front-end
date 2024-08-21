@@ -25,6 +25,7 @@ const EventForm = ({ handleAddEvent }) => {
   return (
     <main className="container mt-4">
       <form onSubmit={handleSubmit} className="p-4 border rounded shadow-sm bg-light">
+        <h3>Add New Event</h3>
         <div className="mb-3">
           <label htmlFor="name-input" className="form-label">Name</label>
           <input
