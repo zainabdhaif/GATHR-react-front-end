@@ -32,11 +32,11 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <hr />
+        {/* <hr /> */}
       </div>
       <div className="container">
         <div className="row">
-          <div className="col-md-8 col-sm-6 col-xs-12">
+          <div>
             <p className="copyright-text">
               Copyright &copy; 2024 All Rights Reserved by{' '}
               <a href="https://Gathr.com">Gathr</a>.
