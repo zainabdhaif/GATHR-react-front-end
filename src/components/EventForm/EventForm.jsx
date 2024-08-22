@@ -4,20 +4,33 @@ import {useNavigate} from 'react-router-dom';
 
 const EventForm = ({ handleAddEvent }) => {
   const navigate = useNavigate();
+  const today = new Date().toISOString().split('T')[0];
   const [formData, setFormData] = useState({
     name: '',
     description: '',
     location: '',
     category: 'sports',
-    dateStarted: '',
+    dateStarted: today,
     dateEnded: '',
     price: '',
     image: '',
   });
 
+  // const handleChange = (evt) => {
+  //   setFormData({ ...formData, [evt.target.name]: evt.target.value });
+  // };
+
   const handleChange = (evt) => {
-    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+    if (evt.target.name === 'dateStarted') {
+      const dateStarted = evt.target.value;
+      const dateEndedInput = document.getElementById('dateEnded-input');
+      dateEndedInput.min = dateStarted;
+      setFormData({ ...formData, [evt.target.name]: evt.target.value });
+    } else {
+      setFormData({ ...formData, [evt.target.name]: evt.target.value });
+    }
   };
+
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -89,7 +102,7 @@ const EventForm = ({ handleAddEvent }) => {
             <option value="Educational">Educational</option>
           </select>
         </div>
-
+{/* 
         <div className="mb-3">
           <label htmlFor="dateStarted-input" className="form-label">Date Started</label>
           <input
@@ -113,6 +126,33 @@ const EventForm = ({ handleAddEvent }) => {
             className="form-control"
             value={formData.dateEnded}
             onChange={handleChange}
+          />
+        </div> */}
+
+<div className="mb-3">
+          <label htmlFor="dateStarted-input" className="form-label">Date Started</label>
+          <input
+            required
+            type="date"
+            name="dateStarted"
+            id="dateStarted-input"
+            className="form-control"
+            value={formData.dateStarted}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="dateEnded-input" className="form-label">Date Ended</label>
+          <input
+            required
+            type="date"
+            name="dateEnded"
+            id="dateEnded-input"
+            className="form-control"
+            value={formData.dateEnded}
+            onChange={handleChange}
+            min={formData.dateStarted}
           />
         </div>
 
