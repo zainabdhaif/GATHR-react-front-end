@@ -18,12 +18,6 @@ const BookingList = () => {
     if (user && !bookings) getBookings();
   }, [user, bookings]);
 
-
-  // const handleCancel = (bookid) => {
-  //   bookingService.cancel(bookid);
-  //   location.reload();
-  //   console.log("Cancel button clicked", bookid);
-  // };
   const handleCancel = (bookid) => {
     Swal.fire({
       title: 'Are you sure?',

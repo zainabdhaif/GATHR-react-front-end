@@ -26,20 +26,6 @@ const App = () => {
 
   const [user, setUser] = useState(authService.getUser());
   const [events, setEvents] = useState(null);
-
-  // useEffect(() => {
-  //   const fetchAllEvents = async () => {
-  //     const eventsData = await eventService.index();
-  //     setEvents(eventsData);
-  //   };
-    
-  //   if(user && !events) fetchAllEvents();
-  // }, []);
-
-  // const handleAddBooking = () => {
-  //   console.log('Booking added');
-  // }
-
   const handleSignout = () => {
     authService.signout();
     setUser(null);

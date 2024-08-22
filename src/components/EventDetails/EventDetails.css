@@ -1,13 +1,10 @@
-
 .header{ 
     background-Size: cover;
     background-Position: center;
     height: 500px;
-    border-Radius: 10px
-
-
+    border-Radius: 10px;
   }
-
+  
   .display-4{
     color: rgb(253, 251, 247);
     text-align: center;

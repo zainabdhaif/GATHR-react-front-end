@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import eventService from "../../services/eventService";
 import Swal from 'sweetalert2';
 import './Edit.css'; 
-// import './EventEdit.css'; 
 
 const EventEdit = () => {
   const { eventId } = useParams();
@@ -47,19 +46,6 @@ const EventEdit = () => {
     const { name, value } = e.target;
     setFormData(prevState => ({ ...prevState, [name]: value }));
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await eventService.update(eventId, formData);
-  //     navigate(`/events/${eventId}`); 
-  //   } catch (error) {
-  //     console.error("Error updating event:", error);
-   
-  //   }
-  // };
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

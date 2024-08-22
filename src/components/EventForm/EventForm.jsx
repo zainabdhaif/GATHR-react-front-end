@@ -15,11 +15,6 @@ const EventForm = ({ handleAddEvent }) => {
     price: '',
     image: '',
   });
-
-  // const handleChange = (evt) => {
-  //   setFormData({ ...formData, [evt.target.name]: evt.target.value });
-  // };
-
   const handleChange = (evt) => {
     if (evt.target.name === 'dateStarted') {
       const dateStarted = evt.target.value;
@@ -102,32 +97,6 @@ const EventForm = ({ handleAddEvent }) => {
             <option value="Educational">Educational</option>
           </select>
         </div>
-{/* 
-        <div className="mb-3">
-          <label htmlFor="dateStarted-input" className="form-label">Date Started</label>
-          <input
-            required
-            type="date"
-            name="dateStarted"
-            id="dateStarted-input"
-            className="form-control"
-            value={formData.dateStarted}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="dateEnded-input" className="form-label">Date Ended</label>
-          <input
-            required
-            type="date"
-            name="dateEnded"
-            id="dateEnded-input"
-            className="form-control"
-            value={formData.dateEnded}
-            onChange={handleChange}
-          />
-        </div> */}
 
 <div className="mb-3">
           <label htmlFor="dateStarted-input" className="form-label">Date Started</label>

@@ -4,8 +4,8 @@
     justify-content: space-around;
     padding-top: 16px;
     flex-wrap:wrap;
-    overflow-x: auto; /* Add this line to enable horizontal scrolling */
-    white-space: nowrap; /* Add this line to prevent the cards from wrapping */
+    overflow-x: auto;
+    white-space: nowrap;
     margin-bottom: 20px;
 }
 
