@@ -11,7 +11,7 @@ The project plan can be viewed [here](https://trello.com/b/qLPNSX4N/gathr)
 
 1. As a user, I want to view all events.
 2. As a user, I want to view event details.
-3. 3. As a user, I want to book events.
+3. As a user, I want to book events.
 4. As a user, I want to cancel my booking.
 5. As a user, I want to edit my bookings.
 6. As an admin I want to be able to set a ticket prices, even details, locations, dates and times, and other relevant information.
