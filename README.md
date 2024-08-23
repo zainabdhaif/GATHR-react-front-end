@@ -41,8 +41,39 @@ The project plan can be viewed [here](https://trello.com/b/qLPNSX4N/gathr)
 
 
 <p align="center">
-<img src="public/images/ERD.png" alt="drawing" width="800" height="400"/>
+<img src="public/screenshots/homepage.png" alt="drawing" width="800" height="400"/>
 </p>
+
+<p align="center">
+<img src="public/screenshots/homepage2.png" alt="drawing" width="800" height="400"/>
+</p>
+
+<p align="center">
+<img src="public/screenshots/events.png" alt="drawing" width="800" height="400"/>
+</p>
+
+<p align="center">
+<img src="public/screenshots/create event.png" alt="drawing" width="800" height="400"/>
+</p>
+
+<p align="center">
+<img src="public/screenshots/bookings.png" alt="drawing" width="800" height="400"/>
+</p>
+
+<p align="center">
+<img src="public/screenshots/book.png" alt="drawing" width="800" height="400"/>
+</p>
+
+
+
+## Deployed Link
+
+The deployed webstie can be viewed [here](https://gathr-wesbite.vercel.app/)
+
+
+## Backend Repository Link
+
+The backend repo can be viewed [here](https://github.com/zainabdhaif/GATHR-express-back-end)
 
 ## Credits
 ### React + Vite
